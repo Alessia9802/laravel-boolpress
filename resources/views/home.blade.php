@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h2>home admin</h2>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,10 +16,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
-<h1>welcome</h1>
+
 @endsection
