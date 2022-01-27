@@ -15,13 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+
+    return view('guest.welcome');
+})->name('home');
+
+Route::resource('posts', PostController::class)->only(['index', 'show']);
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
-    Route::get('/', 'HomeController@index')->name('index');
+    //Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('posts', PostController::class);
 });
