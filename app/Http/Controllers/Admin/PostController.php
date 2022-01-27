@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -27,8 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.posts.create');
+        //  
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -41,16 +43,15 @@ class PostController extends Controller
     {
         //
         //validazione
-        $validated = $request->validate([
+        $validateData = $request->validate([
             'title' => 'required',
             'cover' => 'nullable',
             'text' => 'nullable',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'category' => 'nullable|exists:categories,id'
         ]);
 
-        // Salva
-        Post::create($validated);
-        // redirect
+        Post::create($validateData);
         return redirect()->route('admin.posts.index');
     }
 
