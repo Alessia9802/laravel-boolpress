@@ -5,9 +5,9 @@
 
 <div class="container">
     <div class="row gy-2">
-        @foreach($posts as $post)
+        @foreach($products as $post)
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 <img class="card-img-top" src="{{$post->cover}}" alt="{{$post->title}}">
                 <div class="card-body">

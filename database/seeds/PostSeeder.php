@@ -18,8 +18,7 @@ class PostSeeder extends Seeder
      for ($i=0; $i < 15; $i++) {
             $post = new Post();
             $post->title = $faker->sentence();
-            $post->description = $faker->text();
-            $post->cover = $faker->imageUrl(600, 400, 'Posts', $post->title);       
+            $post->description = $faker->text();     
             $post->save();
         }
     }
