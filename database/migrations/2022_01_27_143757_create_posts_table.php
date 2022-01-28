@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('sub_title')->nullable();
+            $table->string('slug');
             $table->string('cover')->default('https://picsum.photos/id/1011/300/300');
             $table->text('description')->nullable();
             $table->timestamps();
