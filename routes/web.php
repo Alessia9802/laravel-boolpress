@@ -19,10 +19,10 @@ Route::get('/', function () {
     return view('guest.welcome');
 })->name('home');
 
-Route::resource('posts', PostController::class)->only(['index', 'show']);
+Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'post:slug');
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
