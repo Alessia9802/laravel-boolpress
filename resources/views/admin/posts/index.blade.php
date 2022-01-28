@@ -25,7 +25,7 @@
             <td>{{$post->slug}}</td>
             <td>
                 {{-- <a href="{{route('posts.show', $post->slug )}}"><i class="fas fa-eye fa-lg fa-fw"></i></a> --}}
-                <a href="{{route('admin.posts.edit', $post->slug )}}"> <i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
+                {{-- <a href="{{route('admin.posts.edit', $post->slug )}}"> <i class="fas fa-pencil-alt fa-lg fa-fw"></i></a> --}}
 
 
                 <!-- Button trigger modal -->
@@ -46,12 +46,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <form action="{{route('admin.posts.destroy', $post->slug)}}" method="post">
+                                {{-- <form action="{{route('admin.posts.destroy', $post->slug)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
 
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
                     </div>

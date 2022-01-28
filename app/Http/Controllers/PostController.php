@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('guest.posts.index', ['products' => Post::all()]);
+        return view('guest.posts.index', ['posts' => Post::all()]);
     }
 
     /**

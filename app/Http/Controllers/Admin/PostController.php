@@ -18,7 +18,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('admin.posts.index', ['posts' => Post::all()]);
+         $posts = Post::all();
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -28,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //  
+        //
         $categories = Category::all();
         return view('admin.posts.create', compact('categories'));
     }
@@ -96,7 +97,7 @@ class PostController extends Controller
             ],
             'body' => ['nullable']
         ]);
-        
+
         $post->update($validated_data);
 
         return redirect()->route('admin.post.index')->with('message', 'Complimenti hai modificato il post');

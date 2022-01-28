@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row gy-2">
-        @foreach($products as $post)
+        @foreach($posts as $post)
 
         <div class="col-md-3">
             <div class="card">
