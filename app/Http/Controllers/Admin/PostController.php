@@ -49,7 +49,7 @@ class PostController extends Controller
             'cover' => 'nullable',
             'text' => 'nullable',
             'description' => 'nullable',
-            'category' => 'nullable|exists:categories,id'
+            'category' => 'nullable|exists:categories,slug'
         ]);
 
         Post::create($validateData);
@@ -93,7 +93,7 @@ class PostController extends Controller
         $validated_data = $request->validate([
             'title' => [
                 'required',
-                Rule::unique('posts')->ignore($post->id),
+                Rule::unique('posts')->ignore($post->slug),
             ],
             'body' => ['nullable']
         ]);
