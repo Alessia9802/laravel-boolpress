@@ -20,6 +20,27 @@
         @endforeach
 
     </div>
+
+     <aside class="col-md-3">
+
+
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h3>
+                        Categories
+                    </h3>
+
+                    <ul>
+                        @foreach($categories as $category)
+                        <li>
+                            <a href="{{route('categories.posts', $category->slug )}}">{{$category->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
+     </aside>
 </div>
 
 @endsection
