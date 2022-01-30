@@ -15,12 +15,12 @@ class CategorySeeder extends Seeder
     public function run(Faker $faker)
     {
         //
-        $categories = ['Programming', 'Automation', 'Web design', 'Best Practices'];
+        $categories = ['Frontend', 'Backend', 'Fullstack', 'Laravel', 'Vue'];
       foreach ($categories as $category) {
-              $cat = new Category();
-              $cat->name = $category;
-              $cat->slug = Str::slug($category);
-              $cat->save();
-}
+            $_cat = new Category();
+            $_cat->name = $category;
+            $_cat->slug = Str::slug($_cat->name);
+            $_cat->save();
+        }
     }
 }

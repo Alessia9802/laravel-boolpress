@@ -24,6 +24,25 @@
         <p>
             {{$post->description}}
         </p>
+        <div class="metadata">
+        <div class="category">
+
+            @if($post->category)
+            Category: <a href="{{route('categories.posts', $post->category->slug)}}">{{$post->category->name}}</a>
+            @else
+            <span>'Uncategorized'</span>
+            @endif
+
+        </div>
+        <div class="tags">
+            Tags:
+            @forelse($post->tags as $tag)
+            <a href="{{route('tags.posts', $tag->slug)}}">{{$tag->name}}</a>
+            @empty
+            <span>Untagged</span>
+            @endforelse
+
+        </div>
     </div>
 </div>
 @endsection

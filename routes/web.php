@@ -22,12 +22,15 @@ Route::get('/', function () {
 Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'slug');
 Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
 
+Route::get('tags/{tag:slug}/posts', 'TagController@posts')->name('tags.posts');
+
 Auth::routes(['register' => true]);
 
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     //Route::get('/', 'HomeController@index')->name('index');
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('tags', TagController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
 });

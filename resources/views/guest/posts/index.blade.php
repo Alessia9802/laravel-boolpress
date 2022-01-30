@@ -12,35 +12,46 @@
                 <img class="card-img-top" src="{{$post->cover}}" alt="{{$post->title}}">
                 <div class="card-body">
                     <h4 class="card-title">{{$post->title}}</h4>
-                    <p class="card-text">{{$post->text}}</p>
+
                     <a href="{{route('posts.show', $post->slug)}}">View post</a>
-                </div>
+                    <div class="metadata">
+                        <div class="category">
+                            @if($post->category)
+                              Category: <a href="{{route('categories.posts', $post->category->slug)}}">{{$post->category->name}}</a>
+                            @else
+                            <span>'Uncategorized'</span>
+                             @endif
+                         </div>
+                     </div>
+                     <div class="tags">
+                               Tags:
+                             @forelse($post->tags as $tag)
+                              <a href="{{route('tags.posts', $tag->slug)}}">{{$tag->name}}</a>
+                              @empty
+                            <span>Untagged</span>
+                           @endforelse
+
+                   </div>
+
+                   </div>
+
+
+
+
+
             </div>
         </div>
+
         @endforeach
 
     </div>
 
-     <aside class="col-md-3">
+      <aside class="col-md-3">
 
 
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h3>
-                        Categories
-                    </h3>
 
-                    <ul>
-                        @foreach($categories as $category)
-                        <li>
-                            <a href="{{route('categories.posts', $category->slug )}}">{{$category->name}}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
 
-     </aside>
+        </aside>
 </div>
 
 @endsection

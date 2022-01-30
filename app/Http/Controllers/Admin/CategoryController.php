@@ -31,7 +31,8 @@ class CategoryController extends Controller
     {
         // validate data
         $validated_date = $request->validate([
-            'name' => 'required|unique:categories'
+            'name' => 'required|unique:categories',
+            'category_id' => 'nullable | exists:categories,id',
         ]);
         $validated_date['slug'] = Str::slug($request->name);
         // save
