@@ -17,7 +17,10 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('guest.posts.index', ['posts' => Post::all()]);
+         $posts = Post::orderByDesc('id')->paginate(12);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('guest.posts.index', compact('posts', 'categories', 'tags'));
     }
 
     /**
