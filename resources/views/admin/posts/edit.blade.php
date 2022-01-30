@@ -57,7 +57,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">description</label>
+        <label for="description" class="form-label">Description</label>
         <textarea class="form-control @error('description') is_invalid @enderror" name="description" id="description" rows="5">{{ $post->description}}</textarea>
     </div>
 

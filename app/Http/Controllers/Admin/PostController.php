@@ -22,6 +22,10 @@ class PostController extends Controller
     {
         //
          $posts = Post::all();
+
+         $posts = Auth::user()->posts()->orderByDesc('id')->paginate(10);
+
+
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -95,7 +99,14 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
-        return view('.posts.edit', compact('post'));
+         $categories = Category::all();
+        $tags = Tag::all();
+
+        if (Auth::id() === $post->user_id) {
+            return view('admin.posts.edit', compact('post', 'categories', 'tags'));
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -108,17 +119,34 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
-        $validated_data = $request->validate([
-            'title' => [
-                'required',
-                Rule::unique('posts')->ignore($post->slug),
-            ],
-            'description' => ['nullable']
-        ]);
+        if (Auth::id() === $post->user_id) {
+            $validated = $request->validate([
+                'title' => [
+                    'required',
+                    Rule::unique('posts')->ignore($post->id), 'max:200'
+                ],
+                'sub_title' => ['nullable'],
+                'cover' => ['nullable'],
+                'body' => ['nullable'],
 
-        $post->update($validated_data);
+            ]);
 
-        return redirect()->route('admin.post.index')->with('message', 'Complimenti hai modificato il post');
+            // Genera slug
+            $validated['slug'] = Str::slug($validated['title']);
+            // Salvataggio
+            $post->update($validated);
+
+            if ($request->has('tags')) {
+                $request->validate([
+                    'tags' => ['nullable', 'exists:tags,id']
+                ]);
+                $post->tags()->sync($request->tags);
+            }
+            // Redirect
+            return redirect()->route('admin.posts.index')->with('message', 'Post aggiornato con successo');
+        } else {
+            abort(403);
+        }
     }
 
     /**
