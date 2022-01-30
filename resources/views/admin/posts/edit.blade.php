@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 
 @section('content')
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="mb-3">
+     <div class="mb-3">
         <label for="category_id" class="form-label">Categories</label>
         <select class="form-control @error('category_id') is_invalid @enderror" name="category_id" id="category_id">
             <option value="">Uncategorized</option>
@@ -45,7 +45,7 @@
         </select>
     </div>
 
-    <div class="mb-3">
+     <div class="mb-3">
         <label for="tags" class="form-label">Tags</label>
         <select multiple class="form-select" name="tags[]" id="tags">
             <option disabled>Select all tags</option>
@@ -57,8 +57,8 @@
     </div>
 
     <div class="mb-3">
-        <label for="body" class="form-label">Body</label>
-        <textarea class="form-control @error('body') is_invalid @enderror" name="body" id="body" rows="5">{{ $post->body}}</textarea>
+        <label for="description" class="form-label">description</label>
+        <textarea class="form-control @error('description') is_invalid @enderror" name="description" id="description" rows="5">{{ $post->description}}</textarea>
     </div>
 
     <button type="submit" class="btn btn-dark">Add Post</button>

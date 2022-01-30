@@ -19,14 +19,15 @@ Route::get('/', function () {
     return view('guest.welcome');
 })->name('home');
 
-Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'id');
+Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'slug');
+Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
 
-
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     //Route::get('/', 'HomeController@index')->name('index');
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
 });

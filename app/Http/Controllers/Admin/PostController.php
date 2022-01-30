@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
@@ -42,17 +44,31 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //validazione
-        $validateData = $request->validate([
-            'title' => 'required',
-            'cover' => 'nullable',
-            'text' => 'nullable',
-            'description' => 'nullable',
-            'category' => 'nullable|exists:categories,slug'
+        $validated = $request->validate([
+            'title' => ['required', 'unique:posts', 'max:200'],
+            'sub_title' => ['nullable'],
+            'cover' => ['nullable'],
+            'description' => ['nullable'],
+            'category_id' => ['nullable', 'exists:categories,id'],
         ]);
 
-        Post::create($validateData);
+
+
+        //ddd($validated);
+        // Genera slug
+        $validated['slug'] = Str::slug($validated['title']);
+
+        //ddd($validated);
+        $validated['user_id'] = Auth::id();
+        // Salvataggio
+        $post = Post::create($validated);
+        if ($request->has('tags')) {
+            $request->validate([
+                'tags' => ['nullable', 'exists:tags,id']
+            ]);
+            $post->tags()->attach($request->tags);
+        }
+        // Redirect
         return redirect()->route('admin.posts.index');
     }
 
@@ -65,7 +81,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
-        return view('guest.posts.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -77,7 +93,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
-        return view('guest.posts.edit', compact('post'));
+        return view('.posts.edit', compact('post'));
     }
 
     /**
@@ -95,7 +111,7 @@ class PostController extends Controller
                 'required',
                 Rule::unique('posts')->ignore($post->slug),
             ],
-            'body' => ['nullable']
+            'description' => ['nullable']
         ]);
 
         $post->update($validated_data);

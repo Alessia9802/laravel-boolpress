@@ -22,19 +22,19 @@
             <td scope="row">{{$post->id}}</td>
             <td><img width="100" src="{{$post->cover}}" alt="{{$post->title}}"></td>
             <td>{{$post->title}}</td>
-            <td>{{$post->id}}</td>
+            <td>{{$post->slug}}</td>
             <td>
-                <a href="{{route('posts.show', '$post->id')}}"><i class="fas fa-eye fa-lg fa-fw"></i></a>
-                <a href="{{route('admin.posts.edit', '$post->id' )}}"> <i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
+                <a href="{{route('posts.show', $post->slug)}}"><i class="fas fa-eye fa-lg fa-fw"></i></a>
+                <a href="{{route('admin.posts.edit', $post->slug )}}"> <i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
 
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#delete_post_{{$post->id}}">
-                    <i class="fas fa-trash fa-lg fa-fw"></i>
+                <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#delete_post_{{$post->slug}}">
+                    <i class="fas fa-trash"></i>
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="delete_post_{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="modal_{{$post->id}}" aria-hidden="true">
+                <div class="modal fade" id="delete_post_{{$post->slug}}" tabindex="-1" role="dialog" aria-labelledby="modal_{{$post->slug}}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <form action="{{route('admin.posts.destroy', $post->id)}}" method="post">
+                                <form action="{{route('admin.posts.destroy', $post->slug)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
