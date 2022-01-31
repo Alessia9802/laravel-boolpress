@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
         <label for="cover" class="form-label">Cover Image URL</label>
-        <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" placeholder="https://" aria-describedby="coverHelper" value="{{old('cover')}}">
+        <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" enctype="multipart/form-data" placeholder="https://" aria-describedby="coverHelper" value="{{old('cover')}}">
         <small id="coverHelper" class="text-muted">Add your post cover image here, max 255 characters</small>
     </div>
 
@@ -38,7 +38,7 @@
         </select>
     </div>
 
-    {{-- <div class="mb-3">
+     <div class="mb-3">
         <label for="tags" class="form-label">Tags</label>
         <select multiple class="form-select" name="tags[]" id="tags">
             <option disabled>Select all tags</option>
@@ -47,7 +47,7 @@
             <option value="{{$tag->id}}">{{$tag->name}}</option>
             @endforeach
         </select>
-    </div> --}}
+    </div>
 
     <div class="mb-3">
         <label for="body" class="form-label">Body</label>

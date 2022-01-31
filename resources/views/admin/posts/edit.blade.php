@@ -28,7 +28,7 @@
         </div>
         <div>
             <label for="cover" class="form-label">Cover Image URL</label>
-            <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" placeholder="https://" aria-describedby="coverHelper" value="{{$post->cover}}">
+            <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" enctype="multipart/form-data" placeholder="https://" aria-describedby="coverHelper" value="{{$post->cover}}">
             <small id="coverHelper" class="text-muted">Add your post cover image here, max 255 characters</small>
         </div>
     </div>

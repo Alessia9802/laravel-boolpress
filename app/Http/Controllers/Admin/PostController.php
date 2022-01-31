@@ -10,6 +10,8 @@ use App\Tag;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -50,6 +52,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $cover = Storage::put('uploads', $data['image']);
+
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:200'],
             'sub_title' => ['nullable'],
