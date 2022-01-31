@@ -21,7 +21,6 @@ class PostController extends Controller
          $posts = Post::orderByDesc('id')->paginate(12);
         $categories = Category::all();
         $tags = Tag::all();
-        $data = Data::all();
         return view('guest.posts.index', compact('posts', 'categories', 'tags'));
     }
 
