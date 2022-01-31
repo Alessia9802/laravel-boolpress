@@ -7,7 +7,7 @@
 
 @include('partials.errors')
 
-<form action="{{route('admin.posts.store')}}" method="post">
+<form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
@@ -21,10 +21,9 @@
         <small id="sub_titleHelper" class="text-muted">Add your post sub title max 255 characters</small>
     </div>
     <div class="mb-3">
-        <label for="cover" class="form-label">Cover Image URL</label>
-        <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" enctype="multipart/form-data" placeholder="https://" aria-describedby="coverHelper" value="{{old('cover')}}">
-        <img src="{{asset('storage/' . $post->cover)}}" alt="">
-        <small id="coverHelper" class="text-muted">Add your post cover image here, max 255 characters</small>
+
+        <label for="image">Immagine</label>
+            <input type="file" name="cover" id="" placeholder="cover">
     </div>
 
     <div class="mb-3">

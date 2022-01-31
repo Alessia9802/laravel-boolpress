@@ -52,7 +52,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $cover = Storage::put('uploads', $data['image']);
+
 
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:200'],
@@ -72,6 +72,10 @@ class PostController extends Controller
         $validated['user_id'] = Auth::id();
         // Salvataggio
         $post = Post::create($validated);
+        if ($request->file('cover')) {
+            $post->cover = Storage::put('posts', $request->file('cover'));
+        }
+        $post->save();
         if ($request->has('tags')) {
             $request->validate([
                 'tags' => ['nullable', 'exists:tags,id']
@@ -139,6 +143,10 @@ class PostController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
             // Salvataggio
             $post->update($validated);
+            if ($request->file('cover')) {
+            Storage::delete($post->cover);
+            $post->cover = Storage::put('post', $request->file('cover'));
+        }
 
             if ($request->has('tags')) {
                 $request->validate([

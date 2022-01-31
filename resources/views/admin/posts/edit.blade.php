@@ -7,7 +7,7 @@
 
 @include('partials.errors')
 
-<form action="{{route('admin.posts.update', $post->slug)}}" method="post">
+<form action="{{route('admin.posts.update', $post->slug)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -27,10 +27,9 @@
             <img width="100" src="{{$post->cover}}">
         </div>
         <div>
-            <label for="cover" class="form-label">Cover Image URL</label>
-            <input type="text" name="cover" id="cover" class="form-control @error('cover') is_invalid @enderror" enctype="multipart/form-data" placeholder="https://" aria-describedby="coverHelper" value="{{$post->cover}}">
-            <small id="coverHelper" class="text-muted">Add your post cover image here, max 255 characters</small>
-            <img src="{{asset('storage/' . $post->cover)}}" alt="">
+            <label for="immagine">Immagine</label>
+            <input type="file" name="cover" id="" value="{{ $post->cover }}">
+            <img src="{{asset('storage/' . $post->cover )}}" alt="">
         </div>
     </div>
 
