@@ -22,13 +22,13 @@ class PageController extends Controller
     //ddd($request->all());
     $valData = $request->validate([
         'name' => 'required',
-        'email' => 'required|email',
-        'message' => 'required|min:50|max:500'
+        'email' => 'required|email'
     ]);
 
     //ddd($valData);
     return (new ContactFormMail($valData))->render();
     //Mail::to('admin@example.com')->send(new ContactFormMail($valData));
+    return redirect()->back()->with('message', 'Message sent successfully');
 
 }
 
