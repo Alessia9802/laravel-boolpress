@@ -24,6 +24,13 @@ Route::get('posts/{post}', function (Post $post) {
     return new PostResource(Post::find($post));
 });
 
+
+
+/* VUE POST */
+Route::get('blog', function () {
+    return view('blog.index');
+});
+
 Route::get('contacts', 'ContactController@show_contact_page')->name('contacts.form');
 Route::post('contacts', 'ContactController@store')->name('contacts.send');
 

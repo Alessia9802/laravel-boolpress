@@ -42,11 +42,15 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contacts.form')}}">Contacts</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{route('posts.index')}}">Posts</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('blog.index')}}">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('contacts.form')}}">Contacts</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
