@@ -38,10 +38,10 @@
     </div>
     <div class="form-group">
         <label for="body">Message</label>
-        <textarea class="form-control" name="Message" id="Message" rows="5">{{old('Message')}}</textarea>
+        <textarea class="form-control" name="message" id="message" rows="5">{{old('message')}}</textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary"><i class="fas fa-envelope-open fa-lg fa-fw"></i> Send</button>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-envelope-open fa-lg fa-fw"></i>Send</button>
 </form>
 </div>
 

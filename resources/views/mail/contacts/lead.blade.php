@@ -11,9 +11,8 @@
 
     <dl>
         <dd>Name:{{$data['name']}}</dd>
-        <dd>Lastname:{{$data['lastname']}}</dd>
-        <dd>Email:{{$data['Email']}}</dd>
-        <div class="content">
+        <dd>Email:{{$data['email']}}</dd>
+        <div class="message">
             <p>
                 <dd>Message:{{$data['message']}}</dd>
             </p>

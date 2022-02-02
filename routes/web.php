@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('guest.welcome');
 })->name('home');
 
-Route::get('contacts', 'PageController@sendForm')->name('contacts.form');
-Route::post('contacts', 'PageController@contactSend')->name('contacts.send');
+Route::get('contacts', 'ContactController@show_contact_page')->name('contacts.form');
+Route::post('contacts', 'ContactController@store')->name('contacts.send');
 
 Route::resource('posts', PostController::class)->only(['index', 'show'])->parameter('post', 'slug');
 Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
