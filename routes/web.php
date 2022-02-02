@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Resources\PostResource;
+use App\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,10 @@ Route::get('/', function () {
 
     return view('guest.welcome');
 })->name('home');
+
+Route::get('posts/{post}', function (Post $post) {
+    return new PostResource(Post::find($post));
+});
 
 Route::get('contacts', 'ContactController@show_contact_page')->name('contacts.form');
 Route::post('contacts', 'ContactController@store')->name('contacts.send');
