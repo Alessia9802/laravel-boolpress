@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="card text-left" v-for="post in posts">
+        <div class="card text-left" v-for="post in posts" v-bind:key="post">
             <img class="card-img-top" src="holder.js/100px180/" alt="" />
             <div class="card-body">
                 <h4 class="card-title">@{{ post.title }}</h4>
@@ -12,8 +12,10 @@
 
 <script>
 export default {
+    data: {
+        posts: null,
+    },
     mounted() {
-        console.log("Component mounted.");
         Axios.get("/api/posts")
             .then((resp) => {
                 console.log(resp);
@@ -22,6 +24,7 @@ export default {
             .catch((e) => {
                 console.error("Sorry! " + e);
             });
+        console.log("Component mounted.");
     },
 };
 </script>
