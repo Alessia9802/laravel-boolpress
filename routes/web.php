@@ -29,7 +29,7 @@ Route::get('posts/{post}', function (Post $post) {
 /* VUE POST */
 Route::get('blog', function () {
     return view('guest.blog.index');
-});
+})->name('guest.blog.index');
 
 Route::get('contacts', 'ContactController@show_contact_page')->name('contacts.form');
 Route::post('contacts', 'ContactController@store')->name('contacts.send');
