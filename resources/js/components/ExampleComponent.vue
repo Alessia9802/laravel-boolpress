@@ -1,6 +1,11 @@
 <template>
     <div class="container">
-        <div class="card text-left" v-for="post in posts" v-bind:key="post">
+        <div
+            class="card text-left"
+            v-for="post in posts"
+            v-bind:key="post"
+            v-bind="key"
+        >
             <img class="card-img-top" src="holder.js/100px180/" alt="" />
             <div class="card-body">
                 <h4 class="card-title">@{{ post.title }}</h4>
