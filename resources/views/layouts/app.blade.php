@@ -45,7 +45,7 @@
                             <a class="nav-link" href="{{route('posts.index')}}">Posts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('blog.index')}}">Blog</a>
+                            <a class="nav-link" href="{{route('guest.blog.index')}}">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('contacts.form')}}">Contacts</a>

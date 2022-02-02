@@ -28,7 +28,7 @@ Route::get('posts/{post}', function (Post $post) {
 
 /* VUE POST */
 Route::get('blog', function () {
-    return view('blog.index');
+    return view('guest.blog.index');
 });
 
 Route::get('contacts', 'ContactController@show_contact_page')->name('contacts.form');
