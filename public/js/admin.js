@@ -5114,9 +5114,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: {
+    posts: null
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    Axios.get("/api/posts").then(function (resp) {
+      console.log(resp);
+      _this.posts = resp.data.data;
+    })["catch"](function (e) {
+      console.error("Sorry! " + e);
+    });
+    console.log("Component mounted.");
   }
 });
 
@@ -41366,32 +41378,40 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component"),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    _vm._l(_vm.posts, function (post) {
+      return _c(
+        "div",
+        _vm._b(
+          { key: post, staticClass: "card text-left" },
+          "div",
+          _vm.key,
+          false
+        ),
+        [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "holder.js/100px180/", alt: "" },
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _vm._v("@" + _vm._s(post.title)),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              ),
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v("@" + _vm._s(post.body)),
             ]),
           ]),
-        ]),
-      ]),
-    ])
-  },
-]
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

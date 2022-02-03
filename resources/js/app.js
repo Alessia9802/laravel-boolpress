@@ -8,6 +8,44 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+/* SETUP VUE ROUTER */
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
+
+/* Route page components */
+const Home = Vue.component("Home", require("./pages/Home.vue").default);
+const About = Vue.component("About", require("./pages/About.vue").default);
+const Contacts = Vue.component(
+    "Contacts",
+    require("./pages/Contacts.vue").default
+);
+/* vue name routes and components  */
+const routes = [
+    {
+        path: "/",
+        name: "home",
+        component: Home,
+    },
+    {
+        path: "/about",
+        name: "about",
+        component: About,
+    },
+    {
+        path: "/contacts",
+        name: "contacts",
+        component: Contacts,
+    },
+];
+
+/* Create e router instance */
+const router = new VueRouter({
+    mode: "history",
+    routes,
+});
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -18,6 +56,8 @@ window.Vue = require("vue");
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component("App", require("./App.vue").default);
 
 Vue.component(
     "example-component",
@@ -31,5 +71,6 @@ Vue.component(
  */
 
 const app = new Vue({
+    router,
     el: "#app",
 });

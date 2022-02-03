@@ -15,10 +15,9 @@ use App\Post;
 |
 */
 
-Route::get('/', function () {
-
+Route::get('/{any}', function () {
     return view('guest.welcome');
-})->name('home');
+})->where('any', '.*');
 
 Route::get('posts/{post}', function (Post $post) {
     return new PostResource(Post::find($post));
