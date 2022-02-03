@@ -15,9 +15,7 @@ use App\Post;
 |
 */
 
-Route::get('/{any}', function () {
-    return view('guest.welcome');
-})->where('any', '.*');
+
 
 Route::get('posts/{post}', function (Post $post) {
     return new PostResource(Post::find($post));
@@ -48,3 +46,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
 });
+
+Route::get('/{any}', function () {
+    return view('guest.welcome');
+})->where('any', '.*');
