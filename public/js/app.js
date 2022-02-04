@@ -56987,9 +56987,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -56999,15 +56997,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* SETUP VUE ROUTER */
+// import Vue from "vue";
 
 
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* Route page components */
 
-var Home = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("Home", __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"]);
-var About = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("About", __webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue")["default"]);
-var Contacts = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("Contacts", __webpack_require__(/*! ./pages/Contacts.vue */ "./resources/js/pages/Contacts.vue")["default"]);
+var Home = Vue.component("Home", __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"]);
+var About = Vue.component("About", __webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue")["default"]);
+var Contacts = Vue.component("Contacts", __webpack_require__(/*! ./pages/Contacts.vue */ "./resources/js/pages/Contacts.vue")["default"]);
 /* vue name routes and components  */
 
 var routes = [{
@@ -57025,7 +57023,7 @@ var routes = [{
 }];
 /* Create e router instance */
 
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: "history",
   routes: routes
 });
@@ -57039,7 +57037,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("App", __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue")["default"]); // Vue.component(
+Vue.component("App", __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue")["default"]); // Vue.component(
 //     "example-component",
 //     require("./components/ExampleComponent.vue").default
 // );
@@ -57050,7 +57048,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("App", __webpack_require__(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+var app = new Vue({
   router: router,
   el: "#app"
 });

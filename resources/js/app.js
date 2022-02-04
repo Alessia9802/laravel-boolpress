@@ -9,14 +9,16 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 /* SETUP VUE ROUTER */
-import Vue from "vue";
+// import Vue from "vue";
 import VueRouter from "vue-router";
-
 Vue.use(VueRouter);
 
 /* Route page components */
 const Home = Vue.component("Home", require("./pages/Home.vue").default);
 const About = Vue.component("About", require("./pages/About.vue").default);
+const Blog = Vue.component("Blog", require("./pages/Blog.vue").default);
+const PostPage = Vue.component("Post", require("./pages/PostPage.vue").default);
+const _404 = Vue.component("four-0-four", require("./pages/404.vue").default);
 const Contacts = Vue.component(
     "Contacts",
     require("./pages/Contacts.vue").default
@@ -34,9 +36,23 @@ const routes = [
         component: About,
     },
     {
+        path: "/blog",
+        name: "blog",
+        component: Blog,
+    },
+    {
+        path: "/blog/:id",
+        name: "blog",
+        component: PostPage,
+    },
+    {
         path: "/contacts",
         name: "contacts",
         component: Contacts,
+    },
+    {
+        path: "*",
+        component: _404,
     },
 ];
 

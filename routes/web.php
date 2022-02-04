@@ -21,6 +21,8 @@ Route::get('posts/{post}', function (Post $post) {
     return new PostResource(Post::find($post));
 });
 
+Route::get('posts/{post}', 'API\PostController@show');
+
 
 
 /* VUE POST */
